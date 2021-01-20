@@ -1,0 +1,1 @@
+dogec-woo-plugin
