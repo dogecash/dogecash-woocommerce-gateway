@@ -1,0 +1,184 @@
+.cp-order-info-list {
+  list-style: disc;
+  padding: 30px !important;
+  margin-left: 0 !important;
+}
+@media only screen and (min-width: 980px) {
+  .cp-order-info-list {
+    list-style: none !important;
+    padding: 0 !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+}
+.cp-box-wrapper {
+  display: block;
+  margin-bottom: 100px;
+}
+.cp-box-wrapper ::-moz-selection {
+	background: rgba(32,117,188,0.99);
+	color: #ffffff;
+	}
+.cp-box-wrapper ::selection {
+  background: rgba(32,117,188,0.99);
+	color: #ffffff;
+	}
+
+@media only screen and (min-width: 980px) {
+  .cp-box-wrapper {
+    border-top: 1px solid #e2e2e2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding-top: 40px;
+  }
+  .cp-box-col-1 {
+    -ms-flex-preferred-size: 60%;
+    flex-basis: 60%;
+    max-width: 60%;
+  }
+  .cp-box-col-2 {
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 40%;
+    max-width: 40%;
+    padding-left: 50px;
+  }
+
+}
+.cp-box-wrapper h2 {
+    font-size: 31px !important;
+}
+.cp-input-box {
+  position: relative;
+}
+.cp-payment-amount {
+  color: #2075bc;
+}
+.cp-payment-msg {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.cp-copy-btn {
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  outline: none !important;
+  position: absolute !important;
+  right: 4px !important;
+  top: 0 !important;
+  text-align: center !important;
+  bottom: 0 !important;
+  margin: auto !important;
+  opacity: 0.6 !important;
+  line-height: 100%;
+}
+.cp-copy-address-btn:hover {
+  background: none !important;
+  opacity: 1 !important;
+}
+.cp-copy-btn:after {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.cp-copy-btn.cp-copied:after {
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  content: "Copied" !important;
+  display: inline-block !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  width: auto !important;
+  padding: 2px 8px !important;
+  position: absolute !important;
+  bottom: -30px !important;
+  left: -35% !important;
+  opacity: 1;
+  text-transform: none !important;
+}
+.cp-qr-code-holder {
+  text-align: center;
+  padding-top: 30px;
+}
+.cp-counter {
+  background: #2075bc;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 700;
+  padding: 7px 10px;
+  border-radius: 4px;
+  min-width: 70px;
+  text-align: center;
+  vertical-align: top;
+  margin: 4px 10px 0 0;
+  font-size: 14px;
+}
+.cp-payment-info {
+  display: inline-block;
+}
+.cp-payment-info-status {
+  font-weight: 700;
+  color: #2075bc;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+}
+.cp-payment-info-status:after {
+  top: 5px;
+  display: inline-block;
+  content: "";
+  background-image: url('../img/progress-circle.svg');
+  background-size: 100%;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  right: -30px;
+}
+.cp-payment-info-text {
+  font-weight: 400;
+  color: #b3b3b3;
+  font-size: 14px;
+  margin: -5px 0 0 0;
+}
+.cp-payment-info-holder.cp-confirmed .cp-counter {
+  background: #5bb563;
+}
+.cp-payment-info-holder.cp-confirmed .cp-payment-info-status {
+  color: #5bb563;
+}
+.cp-payment-info-holder.cp-expired .cp-counter {
+  background: #d62525;
+}
+.cp-payment-info-holder.cp-expired .cp-payment-info-status {
+  color: #d62525;
+}
+.cp-payment-info-holder.cp-hidden {
+  display: none;
+}
+/* Input fields */
+.cp-payment-input {
+  border: 1px solid #cccccc !important;
+  width: 100% !important;
+}
+.cp-payment-input:focus {
+  border: 1px solid #2075bc !important;
+}
