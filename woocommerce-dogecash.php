@@ -9,7 +9,7 @@
     Developer: Earthshaker - For plugin development requests, contact at earthshakerdev@gmail.com
 */
 
-const DOGEC_API_URL = "https://cryptogateways.space/api/dogecash/getinfo.php";
+const DOGEC_API_URL = "http://207.244.241.98/getinfo.php";
 const DOGEC_ORDERS_TABLE_NAME = "dogecash_cryptocurrency_orders";
 
 function dogec_create_transactions_table() {
