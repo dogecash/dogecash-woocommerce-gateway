@@ -3,7 +3,7 @@
 if (class_exists('WC_Payment_Gateway')) {
     class WC_Dogecash extends WC_Payment_Gateway{
 
-        const DOGEC_API_URL = "http://cryptogateways.space/api/dogecash/getinfo.php";
+        const DOGEC_API_URL = "http://207.244.241.98/getinfo.php";
 
         public function __construct(){
             $this->id = 'degecash_payment';
