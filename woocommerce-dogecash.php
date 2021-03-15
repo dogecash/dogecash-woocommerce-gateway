@@ -175,7 +175,8 @@ function dogec_verify_payment() {
         // Check if transaction is expired
         if($response->status == "expired") {
             if($cp_order->order_status != "expired") {
-                $update = $wpdb->update( $db_table_name, array('transaction_id' => $response->transaction_id, 'order_status' => 'confirmed', 'confirmation_no' => $response->confirmations), array( 'order_id' => $order_id ) );
+                $update = $wpdb->update( $db_table_name, array('order_status' => 'expired'), array( 'order_id' => $order_id ) );
+                $order->update_status('cancelled');
             }
         }
 
