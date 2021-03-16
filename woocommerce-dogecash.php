@@ -88,8 +88,8 @@ function dogec_process_order($order_id) {
 
     $order_crypto_exchange_rate = $wc_dogec->exchange_rate;
 
-    // Redirect to "order received" page if the order is not pending payment
-  	if($order_status !== 'pending') {
+    // Redirect to "order received" page when the order's payment is successfully completed
+  	if($order_status == 'processing') {
     		$redirect = $order->get_checkout_order_received_url();
     		wp_safe_redirect($redirect);
     		exit;
