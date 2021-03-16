@@ -70,6 +70,7 @@ jQuery.noConflict();
                 },
                 success: function(response) {
                     console.log(response);
+                    var order_message = $('.cp-payment-msg');
                     var order_info_holder = $('.cp-payment-info-holder');
                     var order_status = $('.cp-payment-info-status');
                     var counter = $('.cp-counter');
@@ -79,6 +80,13 @@ jQuery.noConflict();
 
                     // Continue with payment verification requests
                     if (response.status == "waiting" || response.status == "detected" || response.status == "failed") {
+                        if(response.status == "expired") {
+                        setTimeout( function(){
+                            location.reload()
+                        }, 2000);
+
+                        return false;
+                    }
                         if(response.status == "detected") {
                             clearInterval(cpCounter);
                             counter.html('00:00');
