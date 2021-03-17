@@ -79,14 +79,17 @@ jQuery.noConflict();
                     order_status.html(response.message);
 
                     // Continue with payment verification requests
-                    if (response.status == "waiting" || response.status == "detected" || response.status == "failed") {
+                    if (response.status == "waiting" || response.status == "detected" || response.status == "failed" || response.status == "expired") {
                         if(response.status == "expired") {
-                        setTimeout( function(){
-                            location.reload()
-                        }, 2000);
+                        order_message.html('The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait.')
 
-                        return false;
-                    }
+                        var current_time = time();
+                        var max_time = Number(response.maxtime) + (5 * 60)
+                        if($max_time < $current_time && $max_time !== 300){
+                            location.reload()
+                        }
+                        }
+
                         if(response.status == "detected") {
                             clearInterval(cpCounter);
                             counter.html('00:00');
