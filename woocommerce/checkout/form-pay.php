@@ -23,6 +23,12 @@ $wc_dogec = new WC_Dogecash;
 $totals = $order->get_order_item_totals();
 $cp_order = dogec_get_cp_order_info($order->get_id());
 
+if($cp_order->order_status == "expired") {
+		$redirect = $order->get_cancel_order_url();
+		wp_safe_redirect($redirect);
+		exit;
+}
+
 
 if($cp_order->order_status == "confirmed") {
 		$redirect = $order->get_checkout_order_received_url();
