@@ -88,8 +88,15 @@ function dogec_process_order($order_id) {
 
     $order_crypto_exchange_rate = $wc_dogec->exchange_rate;
 
-    // Redirect to "order received" page if the order is not pending payment
-  	if($order_status !== 'pending') {
+    // Redirect to "cancelled" page when the order's payment is not received
+    if($order_status == 'cancelled') {
+    		$redirect = $order->get_cancel_order_url();
+    		wp_safe_redirect($redirect);
+    		exit;
+    }
+
+    // Redirect to "order received" page when the order's payment is successfully completed
+  	if($order_status == 'processing') {
     		$redirect = $order->get_checkout_order_received_url();
     		wp_safe_redirect($redirect);
     		exit;
@@ -272,16 +279,16 @@ function dogec_order_remaining_time($order_id) {
 
 // Create order total
 function dogec_order_total_in_crypto($amount, $rate) {
-    $diffrence = 0.00002;
+    $difference = 0.00002;
 
     // Different decimal points based on rate
     if($rate > 100) {
-        $diffrence = 0.00000002;
-        $total = number_format($amount / $rate, 8);
+        $difference = 0.00000002;
+        $total = number_format($amount / $rate, 8,'.','');
     }
     else {
-        $diffrence = 0.00002;
-        $total = number_format($amount / $rate, 5);
+        $difference = 0.00002;
+        $total = number_format($amount / $rate, 5,'.','');
     }
 
     // Create unique amount for payment
@@ -303,10 +310,10 @@ function dogec_order_total_in_crypto($amount, $rate) {
     foreach($other_amounts as $amount){
         if($total == $amount->order_in_crypto){
             if($rate > 100) {
-                $total = number_format($total  + $diffrence, 8);
+                $total = number_format($total  + $difference, 8,'.','');
             }
             else {
-                $total = number_format($total  + $diffrence, 5);
+                $total = number_format($total  + $difference, 5,'.','');
             }
         }
     }

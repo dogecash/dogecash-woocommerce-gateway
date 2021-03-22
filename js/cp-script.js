@@ -70,6 +70,7 @@ jQuery.noConflict();
                 },
                 success: function(response) {
                     console.log(response);
+                    var order_message = $('.cp-payment-msg');
                     var order_info_holder = $('.cp-payment-info-holder');
                     var order_status = $('.cp-payment-info-status');
                     var counter = $('.cp-counter');
@@ -78,7 +79,17 @@ jQuery.noConflict();
                     order_status.html(response.message);
 
                     // Continue with payment verification requests
-                    if (response.status == "waiting" || response.status == "detected" || response.status == "failed") {
+                    if (response.status == "waiting" || response.status == "detected" || response.status == "failed" || response.status == "expired") {
+                        if(response.status == "expired") {
+                        order_message.html('The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait.')
+
+                        var current_time = Math.floor(Date.now() / 1000);
+                        var max_time = Number(response.maxtime) + (5 * 60)
+                        if(max_time < current_time && max_time !== 300){
+                            location.reload()
+                        }
+                        }
+
                         if(response.status == "detected") {
                             clearInterval(cpCounter);
                             counter.html('00:00');
