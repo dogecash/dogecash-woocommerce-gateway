@@ -135,7 +135,7 @@ if (class_exists('WC_Payment_Gateway')) {
     		    static $rate;
 
             if ( $rate !== null ) {
-                return $rate;
+                return $rate['result'];
             }
 
             if ( is_checkout() ) {
