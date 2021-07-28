@@ -9,7 +9,7 @@
     Developer: Earthshaker - For plugin development requests, contact at earthshakerdev@gmail.com
 */
 
-const DOGEC_API_URL = "http://207.244.241.98/getinfo.php";
+const DOGEC_API_URL = "https://payment-checker.dogecash.org/";
 const DOGEC_ORDERS_TABLE_NAME = "dogecash_cryptocurrency_orders";
 
 function dogec_create_transactions_table() {
@@ -127,7 +127,7 @@ function dogec_process_order($order_id) {
 
             $payment_address = $wc_dogec->payment_address;
             $order_total = $order->get_total();
-            $order_in_crypto = dogec_order_total_in_crypto($order_total, $order_crypto_exchange_rate);
+            $order_in_crypto = dogec_order_total_in_crypto($order_total, $order_crypto_exchange_rate['result']);
             $order_currency = $order->get_currency();
 
             $record_new = $wpdb->insert( $db_table_name, array( 'transaction_id' => "", 'payment_address' => $payment_address, 'order_id'=>$order_id, 'order_total' => $order_total, 'order_in_crypto' => $order_in_crypto, 'order_default_currency' => $order_currency, 'order_crypto_exchange_rate' => $order_crypto_exchange_rate, 'order_status' => 'pending', 'order_time'=>time()) );

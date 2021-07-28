@@ -81,13 +81,9 @@ jQuery.noConflict();
                     // Continue with payment verification requests
                     if (response.status == "waiting" || response.status == "detected" || response.status == "failed" || response.status == "expired") {
                         if(response.status == "expired") {
-                        order_message.html('The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait.')
+                            order_message.html('The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait.')
 
-                        var current_time = Math.floor(Date.now() / 1000);
-                        var max_time = Number(response.maxtime) + (5 * 60)
-                        if(max_time < current_time && max_time !== 300){
-                            location.reload()
-                        }
+                            setTimeout(() => location.reload(), 2000)
                         }
 
                         if(response.status == "detected") {

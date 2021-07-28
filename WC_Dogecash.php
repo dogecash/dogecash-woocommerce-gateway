@@ -3,7 +3,7 @@
 if (class_exists('WC_Payment_Gateway')) {
     class WC_Dogecash extends WC_Payment_Gateway{
 
-        const DOGEC_API_URL = "http://207.244.241.98/getinfo.php";
+        const DOGEC_API_URL = "https://payment-checker.dogecash.org/";
 
         public function __construct(){
             $this->id = 'degecash_payment';
@@ -140,7 +140,8 @@ if (class_exists('WC_Payment_Gateway')) {
 
             if ( is_checkout() ) {
                 $rate = file_get_contents(DOGEC_API_URL ."?rate=" . $default_currency);
-                return $rate;
+                $rate = json_decode($rate, true);
+                return $rate['result'];
             }
         }
 
