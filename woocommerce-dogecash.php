@@ -1,6 +1,6 @@
 <?php
 /*
-    Plugin Name: DogeCash Cryptocurrency Payment Gateway for WooCommerce
+    Plugin Name: DogeCash Payment Gateway for Woocommerce
     Description: Payment Gateway for DogeCash Cryptocurrency
     Version: 1.0.4
     Author: DogeCash
