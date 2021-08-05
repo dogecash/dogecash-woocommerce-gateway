@@ -47,7 +47,7 @@ if($cp_order->order_status == "confirmed") {
 				<ul class="cp-order-info-list">
 						<li class="cp-order-info-list-item">
 								<?php _e( 'Order number:', 'woocommerce' ); ?>
-								<strong><?php echo $order->get_order_number(); ?></strong>
+								<strong><?php echo esc_html($order->get_order_number()); ?></strong>
 						</li>
 
 						<li class="cp-order-info-list-item">
@@ -57,7 +57,7 @@ if($cp_order->order_status == "confirmed") {
 
 						<li class="cp-order-info-list-item">
 								<?php _e( 'Total:', 'woocommerce' ); ?>
-								<strong><?php echo $cp_order->order_in_crypto . " " . $wc_dogec->cryptocurrency_used . " (" . $cp_order->order_total . " " . $cp_order->order_default_currency . ")" ?></strong>
+								<strong><?php echo esc_html($cp_order->order_in_crypto . " " . $wc_dogec->cryptocurrency_used . " (" . $cp_order->order_total . " " . $cp_order->order_default_currency . ")") ?></strong>
 						</li>
 				</ul>
 		</div>
@@ -70,7 +70,7 @@ if($cp_order->order_status == "confirmed") {
 
 						<div>Amount:</div>
 						<div class="cp-input-box">
-								<input type="text" class="cp-payment-input" value="<?php echo $cp_order->order_in_crypto ?>" readonly>
+								<input type="text" class="cp-payment-input" value="<?php echo esc_attr($cp_order->order_in_crypto) ?>" readonly>
 								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('/woocommerce-dogecash/img/cp-copy-icon.svg') ?>" /></button>
 						</div>
 
@@ -78,7 +78,7 @@ if($cp_order->order_status == "confirmed") {
 
 						<div>Payment Address:</div>
 						<div class="cp-input-box">
-								<input type="text" class="cp-payment-input" value="<?php echo $cp_order->payment_address ?>" readonly>
+								<input type="text" class="cp-payment-input" value="<?php echo esc_attr($cp_order->payment_address) ?>" readonly>
 								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('/woocommerce-dogecash/img/cp-copy-icon.svg') ?>" /></button>
 						</div>
 
@@ -88,13 +88,13 @@ if($cp_order->order_status == "confirmed") {
 								<div class="cp-counter">00:00</div>
 								<div class="cp-payment-info">
 										<div class="cp-payment-info-status">Waiting for payment...</div>
-										<div class="cp-payment-info-text">Exchange rate locked 1 <?php echo $wc_dogec->cryptocurrency_used; ?> = <?php echo round($cp_order->order_crypto_exchange_rate, 5) . ' ' . $cp_order->order_default_currency; ?></div>
+										<div class="cp-payment-info-text">Exchange rate locked 1 <?php echo esc_html($wc_dogec->cryptocurrency_used) ?> = <?php echo esc_html(round($cp_order->order_crypto_exchange_rate, 5) . ' ' . $cp_order->order_default_currency) ?></div>
 								</div>
 						</div>
 				</div>
 				<div class="cp-box-col-2">
 						<div class="cp-qr-code-holder">
-								<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo $cp_order->payment_address ?>&choe=UTF-8" />
+								<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo esc_attr($cp_order->payment_address) ?>&choe=UTF-8" />
 						</div>
 				</div>
 		</div>
