@@ -22,4 +22,4 @@ On the settings page, all settings are predefined with an optimal configuration;
 
 ## License
 
-This plugin is released under the terms of the MIT license. See for more information [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT).
+This plugin is released under the terms of the GPLv2 license. See for more information [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html).
