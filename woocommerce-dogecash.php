@@ -168,7 +168,8 @@ function dogec_verify_payment() {
     if(empty($transaction_id)){
         $transaction_id = "missing";
     }
-    $response = file_get_contents(DOGEC_API_URL ."?address=" . $payment_address . "&tx=" . $transaction_id . "&amount=" . $order_in_crypto . "&conf=" . $confirmation_no . "&otime=" . $order_time . "&mtime=" . $max_time_limit . "&pv=" . $plugin_version);
+    $response = wp_remote_get(DOGEC_API_URL . "?address=" . $payment_address . "&tx=" . $transaction_id . "&amount=" . $order_in_crypto . "&conf=" . $confirmation_no . "&otime=" . $order_time . "&mtime=" . $max_time_limit . "&pv=" . $plugin_version);
+    $response = wp_remote_retrieve_body($response);
     $response = json_decode($response);
 
 

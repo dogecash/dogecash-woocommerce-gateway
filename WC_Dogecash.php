@@ -139,7 +139,8 @@ if (class_exists('WC_Payment_Gateway')) {
             }
 
             if ( is_checkout() ) {
-                $rate = file_get_contents(DOGEC_API_URL ."?rate=" . $default_currency);
+                $rate = wp_remote_get(DOGEC_API_URL ."?rate=" . $default_currency);
+                $rate = wp_remote_retrieve_body($rate);
                 $rate = json_decode($rate, true);
                 return $rate['result'];
             }
