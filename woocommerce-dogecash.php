@@ -158,7 +158,7 @@ function dogec_verify_payment()
 
     $wc_dogec = new WC_Dogecash;
 
-    $order_id = $_POST['order_id'];
+    $order_id = intval(sanitize_text_field($_POST['order_id']));
     $order = new WC_Order($order_id);
 
 
