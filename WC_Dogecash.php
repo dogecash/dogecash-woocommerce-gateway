@@ -117,7 +117,7 @@ if (class_exists('WC_Payment_Gateway')) {
                     <table>
                         <tr style="vertical-align: middle; text-align: left;">
                             <td width="180">
-                                <img alt="plugin logo" width="160" style="max-height: 40px;" src="<?php echo plugins_url('/woocommerce-dogecash/img/plugin-logo.png') ?>">
+                                <img alt="plugin logo" width="160" style="max-height: 40px;" src="<?php echo plugins_url('img/plugin-logo.png', __FILE__) ?>">
                             </td>
                             <td>
                                 <div>Exchange rate:</div>

@@ -71,7 +71,7 @@ if($cp_order->order_status == "confirmed") {
 						<div>Amount:</div>
 						<div class="cp-input-box">
 								<input type="text" class="cp-payment-input" value="<?php echo esc_attr($cp_order->order_in_crypto) ?>" readonly>
-								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('/woocommerce-dogecash/img/cp-copy-icon.svg') ?>" /></button>
+								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('/img/cp-copy-icon.svg', __FILE__) ?>" /></button>
 						</div>
 
 						<br />
@@ -79,7 +79,7 @@ if($cp_order->order_status == "confirmed") {
 						<div>Payment Address:</div>
 						<div class="cp-input-box">
 								<input type="text" class="cp-payment-input" value="<?php echo esc_attr($cp_order->payment_address) ?>" readonly>
-								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('/woocommerce-dogecash/img/cp-copy-icon.svg') ?>" /></button>
+								<button type="button" class="cp-copy-btn"><img src="<?php echo plugins_url('img/cp-copy-icon.svg', __FILE__) ?>" /></button>
 						</div>
 
 						<br />

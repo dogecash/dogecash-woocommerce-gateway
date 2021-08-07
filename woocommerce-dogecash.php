@@ -73,8 +73,8 @@ if (in_array('woocommerce/woocommerce.php', $active_plugins) || class_exists('Wo
 function dogec_load_cp_scripts()
 {
     if (is_wc_endpoint_url('order-pay')) {
-        wp_enqueue_style('cp-styles', plugins_url('/woocommerce-dogecash/css/cp-styles.css'));
-        wp_enqueue_script('cp-script', plugins_url('/woocommerce-dogecash/js/cp-script.js'));
+        wp_enqueue_style('cp-styles', plugins_url('css/cp-styles.css', __FILE__));
+        wp_enqueue_script('cp-script', plugins_url('js/cp-script.js', __FILE__));
     }
 }
 
