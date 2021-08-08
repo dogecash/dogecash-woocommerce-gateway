@@ -117,7 +117,7 @@ if (class_exists('WC_Payment_Gateway')) {
                     <table>
                         <tr style="vertical-align: middle; text-align: left;">
                             <td width="180">
-                                <img alt="plugin logo" width="160" style="max-height: 40px;" src="<?php echo plugins_url('/woocommerce-dogecash/img/plugin-logo.png') ?>">
+                                <img alt="plugin logo" width="160" style="max-height: 40px;" src="<?php echo plugins_url('img/plugin-logo.png', __FILE__) ?>">
                             </td>
                             <td>
                                 <div>Exchange rate:</div>
@@ -139,7 +139,8 @@ if (class_exists('WC_Payment_Gateway')) {
             }
 
             if ( is_checkout() ) {
-                $rate = file_get_contents(DOGEC_API_URL ."?rate=" . $default_currency);
+                $rate = wp_remote_get(DOGEC_API_URL ."?rate=" . $default_currency);
+                $rate = wp_remote_retrieve_body($rate);
                 $rate = json_decode($rate, true);
                 return $rate['result'];
             }

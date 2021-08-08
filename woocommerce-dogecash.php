@@ -73,8 +73,8 @@ if (in_array('woocommerce/woocommerce.php', $active_plugins) || class_exists('Wo
 function dogec_load_cp_scripts()
 {
     if (is_wc_endpoint_url('order-pay')) {
-        wp_enqueue_style('cp-styles', plugins_url('/woocommerce-dogecash/css/cp-styles.css'));
-        wp_enqueue_script('cp-script', plugins_url('/woocommerce-dogecash/js/cp-script.js'));
+        wp_enqueue_style('cp-styles', plugins_url('css/cp-styles.css', __FILE__));
+        wp_enqueue_script('cp-script', plugins_url('js/cp-script.js', __FILE__));
     }
 }
 
@@ -158,7 +158,7 @@ function dogec_verify_payment()
 
     $wc_dogec = new WC_Dogecash;
 
-    $order_id = $_POST['order_id'];
+    $order_id = intval(sanitize_text_field($_POST['order_id']));
     $order = new WC_Order($order_id);
 
 
@@ -174,7 +174,8 @@ function dogec_verify_payment()
     if (empty($transaction_id)) {
         $transaction_id = "missing";
     }
-    $response = file_get_contents(DOGEC_API_URL . "?address=" . $payment_address . "&tx=" . $transaction_id . "&amount=" . $order_in_crypto . "&conf=" . $confirmation_no . "&otime=" . $order_time . "&mtime=" . $max_time_limit . "&pv=" . $plugin_version);
+    $response = wp_remote_get(DOGEC_API_URL . "?address=" . $payment_address . "&tx=" . $transaction_id . "&amount=" . $order_in_crypto . "&conf=" . $confirmation_no . "&otime=" . $order_time . "&mtime=" . $max_time_limit . "&pv=" . $plugin_version);
+    $response = wp_remote_retrieve_body($response);
     $response = json_decode($response);
 
 
