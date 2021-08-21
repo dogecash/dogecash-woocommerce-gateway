@@ -40,8 +40,8 @@ if($cp_order->order_status == "confirmed") {
 ?>
 <?php if ( $order->get_payment_method() ==  $wc_dogec->id) : ?>
 
-		<input type="hidden" name="cp_order_remaining_time" value="<?php echo dogec_order_remaining_time($order->get_id()); ?>">
-		<input type="hidden" name="cp_order_id" value="<?php echo $order->get_id(); ?>">
+		<input type="hidden" name="cp_order_remaining_time" value="<?php echo esc_html(dogec_order_remaining_time($order->get_id())); ?>">
+		<input type="hidden" name="cp_order_id" value="<?php echo esc_html($order->get_id()); ?>">
 
 		<div class="cp-order-info">
 				<ul class="cp-order-info-list">
@@ -65,8 +65,8 @@ if($cp_order->order_status == "confirmed") {
 		<?php if ( $order->needs_payment() ) : ?>
 		<div class="cp-box-wrapper">
 				<div class="cp-box-col-1">
-						<h2><?php echo $wc_dogec->method_title ?></h2>
-						<p class="cp-payment-msg"><?php echo (dogec_order_remaining_time($order->get_id()) < 0) ? "The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait." : $wc_dogec->description ?></p>
+						<h2><?php echo esc_html($wc_dogec->method_title) ?></h2>
+						<p class="cp-payment-msg"><?php echo esc_html((dogec_order_remaining_time($order->get_id()) < 0) ? "The payment time for order has expired! Do not make any payments as they will be invalid! If you have already made a payment within the allowed time, please wait." : $wc_dogec->description) ?></p>
 
 						<div>Amount:</div>
 						<div class="cp-input-box">
@@ -142,8 +142,8 @@ if($cp_order->order_status == "confirmed") {
 			<?php if ( $totals ) : ?>
 				<?php foreach ( $totals as $total ) : ?>
 					<tr>
-						<th scope="row" colspan="2"><?php echo $total['label']; ?></th><?php // @codingStandardsIgnoreLine ?>
-						<td class="product-total"><?php echo $total['value']; ?></td><?php // @codingStandardsIgnoreLine ?>
+						<th scope="row" colspan="2"><?php echo esc_html($total['label']); ?></th><?php // @codingStandardsIgnoreLine ?>
+						<td class="product-total"><?php echo esc_html($total['value']); ?></td><?php // @codingStandardsIgnoreLine ?>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>
