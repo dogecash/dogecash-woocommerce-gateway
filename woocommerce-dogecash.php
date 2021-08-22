@@ -2,7 +2,7 @@
 /*
     Plugin Name: DogeCash Payment Gateway for Woocommerce
     Description: Payment Gateway for DogeCash Cryptocurrency
-    Version: 1.0.5
+    Version: 1.0.6
     Author: DogeCash
     Author URI: https://dogecash.org
     Plugin URI: https://github.com/dogecash/dogec-woo-plugin
